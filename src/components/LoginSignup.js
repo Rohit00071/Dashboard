@@ -5,22 +5,37 @@ function LoginSignup({ onAuth }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Hardcoded users for demonstration
-  const users = [
+  // State to hold the list of users
+  const [users, setUsers] = useState([
     { email: "user1@example.com", password: "password1" },
     { email: "user2@example.com", password: "password2" },
     { email: "user3@example.com", password: "password3" },
-  ];
+  ]);
 
   const handleAuth = (e) => {
     e.preventDefault();
-    const validUser = users.find(
-      (user) => user.email === email && user.password === password
-    );
-    if (validUser) {
-      onAuth(true);
+
+    if (isLogin) {
+      // Login logic
+      const validUser = users.find(
+        (user) => user.email === email && user.password === password
+      );
+      if (validUser) {
+        onAuth(true);
+      } else {
+        alert("Invalid credentials");
+      }
     } else {
-      alert("Invalid credentials");
+      // Signup logic
+      const existingUser = users.find((user) => user.email === email);
+      if (existingUser) {
+        alert("User already exists! Please log in.");
+      } else {
+        const newUser = { email, password };
+        setUsers([...users, newUser]);
+        alert("User registered successfully! Please log in.");
+        setIsLogin(true); // Redirect to login after signup
+      }
     }
   };
 
