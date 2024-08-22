@@ -2,7 +2,10 @@ import React from "react";
 
 export default function Header({ handle_Submit, handleLogout, viewPortfolio }) {
   return (
-    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#fcdf03" }}>
+    <nav
+      className="navbar navbar-expand-lg"
+      style={{ backgroundColor: "#fcdf03" }}
+    >
       <div className="container-fluid">
         <select
           className="form-select form-select-lg"
@@ -29,7 +32,7 @@ export default function Header({ handle_Submit, handleLogout, viewPortfolio }) {
           style={{ fontFamily: "NHaasGroteskDSPro-65Md" }}
           href="/"
         >
-          Crypto Dashboard
+          Trade Dashboard
         </a>
         <button onClick={viewPortfolio} className="btn btn-primary ml-auto">
           Portfolio
